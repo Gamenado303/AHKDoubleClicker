@@ -26,7 +26,6 @@ recency := 16
 Lclicks := []
 Rclicks := []
 
-
 return
 
 GuiClose:
@@ -48,6 +47,7 @@ return
 
 ^n::
 gui, submit, nohide
+
 while True {
 	if (left = 1) {
 		if (GetKeyState("Lbutton") = 1) {
@@ -62,7 +62,7 @@ while True {
 				Lclicks.Push(A_Now)
 				seconds := A_now - Lclicks[1]
 				cps := Max(1, Round(Lclicks.Count() / seconds))
-				if (cps >= %threshold%) {
+				if (cps >= threshold) {
 					temp = %percent%
 					while temp >= 0	{
 						Random, rand, 0, 100
@@ -72,7 +72,6 @@ while True {
 						}
 						temp -= 100
 					}
-
 				}
 			}
 		}
@@ -90,7 +89,7 @@ while True {
 				Rclicks.Push(A_Now)
 				seconds := A_now - Rclicks[1]
 				cps := Rclicks.Count() / seconds
-				if (cps >= CPSthreshold) {
+				if (cps >= threshold) {
 					temp = %percent%
 					while temp >= 0	{
 						Random, rand, 0, 100
@@ -100,7 +99,6 @@ while True {
 						}
 						temp -= 100
 					}
-
 				}
 			}
 		}
